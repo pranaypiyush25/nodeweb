@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Docker Build') {
       steps{
-        sh 'docker build -t pranaypiyush25/trackcov.'
+        sh 'docker build -t pranaypiyush25/nodeweb .'
         }
        }
         stage('Container Vulnerability Scan')
@@ -56,7 +56,7 @@ pipeline {
         {
             steps{
                 sh 'docker login -u pranaypiyush25 -p #proxin36'
-                sh 'docker push pranaypiyush25/trackcov'
+                sh 'docker push pranaypiyush25/nodeweb'
                 
                 
                 
