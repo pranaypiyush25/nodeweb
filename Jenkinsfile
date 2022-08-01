@@ -65,7 +65,6 @@ pipeline {
         stage('removing unused images')
         {
             steps{
-                sh 'docker container stop $(docker container ls -aq)' 
                 sh 'docker container prune --force'
                 sh 'docker image prune --all --force'
                 sh 'docker ps'
