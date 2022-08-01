@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Docker Build') {
       steps{
-        sh 'docker build -t palakollu145/nodeweb .'
+        sh 'docker build -t pranaypiyush25/trackcov .'
         }
        }
         stage('Container Vulnerability Scan')
