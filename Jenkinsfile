@@ -11,44 +11,73 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/palakollu145/nodeweb'
             }
         }
-        stage('install npm'){
+        stage('Bug Cap')
+        {
+            steps{
+                echo 'bug cap'
+            }
+        }
+        stage('Build'){
             steps{
                 echo 'started npm install'
                 sh 'npm install'
             }
         }
-        stage('version')
+        stage('Unit Test')
         {
             steps{
-                sh 'docker --version'
+                echo 'Unit Test'
             }
         }
-        stage('Building image') {
+        stage('Code Coverage')
+        {
+            steps{
+                echo 'Code Coverage'
+            }
+        }
+        stage('Static Code Analysis TPL Scan')
+        {
+            steps{
+                echo 'Static Code Analysis TPL Scan'
+            }
+        }
+        stage('Docker Build') {
       steps{
         sh 'docker build -t palakollu145/nodeweb .'
         }
-      }
-        stage('login')
+       }
+        stage('Container Vulnerability Scan')
+        {
+            steps{
+                echo 'Container Vulnerability Scan'
+            }
+        }
+        stage('Docker Publish to stable Repo')
         {
             steps{
                 sh 'docker login -u palakollu145 -p Saikrish9949@'
+                sh 'docker push palakollu145/nodeweb'
+                //removing unused images
+                sh 'docker container stop $(docker container ls -aq)' 
+                sh 'docker container prune --force'
+                sh 'docker image prune --all --force'
+                sh 'docker ps'
+                sh 'docker images'
                 
             }
         }
-        stage('pushing image') {
-      steps{
-         sh 'docker push palakollu145/nodeweb'
+        stage('Deploy to QA cluster')
+        {
+            steps{
+                echo 'Deploy to QA cluster'
+            }
         }
-      }
-        stage('removing images'){
-        steps{
-            /*sh 'docker container stop $(docker container ls -aq)' 
-            sh 'docker container prune --force'
-            sh 'docker image prune --all --force'*/
-            sh 'docker ps'
-            sh 'docker images'
+        stage('Test')
+        {
+            steps{
+                echo 'Test'
+            }
         }
-    }
     
 }
 }
