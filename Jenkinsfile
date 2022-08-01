@@ -8,7 +8,7 @@ pipeline {
         stage('git') {
             steps {
                 echo 'pulling code'
-                git branch: 'main', url: 'https://github.com/palakollu145/nodeweb'
+                git branch: 'main', url: 'https://github.com/pranaypiyush25/trackcov'
             }
         }
         stage('Bug Cap')
@@ -55,8 +55,8 @@ pipeline {
         stage('Docker Publish to stable Repo')
         {
             steps{
-                sh 'docker login -u palakollu145 -p Saikrish9949@'
-                sh 'docker push palakollu145/nodeweb'
+                sh 'docker login -u pranaypiyush25 -p #proxin36'
+                sh 'docker push pranaypiyush25/trackcov'
                 
                 
                 
