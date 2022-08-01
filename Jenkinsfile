@@ -8,7 +8,7 @@ pipeline {
         stage('git') {
             steps {
                 echo 'pulling code'
-                git 'https://github.com/pranaypiyush25/nodeweb.git'
+                git branch: 'main', url: 'https://github.com/pranaypiyush25/nodeweb'
             }
         }
         stage('Bug Cap')
