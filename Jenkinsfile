@@ -8,7 +8,7 @@ pipeline {
         stage('git') {
             steps {
                 echo 'pulling code'
-                git 'https://github.com/pranaypiyush25/nodeweb'
+                git 'https://github.com/pranaypiyush25/nodeweb.git'
             }
         }
         stage('Bug Cap')
@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Docker Build') {
       steps{
-        sh 'docker build -t pranaypiyush25/trackcov .'
+        sh 'docker build -t pranaypiyush25/trackcov.'
         }
        }
         stage('Container Vulnerability Scan')
