@@ -57,13 +57,19 @@ pipeline {
             steps{
                 sh 'docker login -u palakollu145 -p Saikrish9949@'
                 sh 'docker push palakollu145/nodeweb'
-                //removing unused images
+                
+                
+                
+            }
+        }
+        stage('removing unused images')
+        {
+            steps{
                 sh 'docker container stop $(docker container ls -aq)' 
                 sh 'docker container prune --force'
                 sh 'docker image prune --all --force'
                 sh 'docker ps'
                 sh 'docker images'
-                
             }
         }
         stage('Deploy to QA cluster')
