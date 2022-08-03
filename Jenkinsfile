@@ -50,6 +50,9 @@ pipeline {
         {
             steps{
                 echo 'Container Vulnerability Scan'
+                script {
+                    echo 'Hello Everyone'
+                }
             }
         }
         stage('Docker Login')
