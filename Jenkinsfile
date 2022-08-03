@@ -1,9 +1,15 @@
 pipeline {
     agent any
+    
+    environment{
+        DOCKERHUB_CREDENTIALS=credentials('DockerHub Creds')
+    }
+    
+    
     tools {
-    nodejs 'nodejs'
-    dockerTool 'docker'
-}
+        nodejs 'nodejs'
+        dockerTool 'docker'
+    }
     stages {
         stage('git') {
             steps {
@@ -55,9 +61,7 @@ pipeline {
         stage('Docker Publish to stable Repo')
         {
             steps{
-                sh 'docker login -u pranaypiyush25 -p #proxin36'
                 sh 'docker push pranaypiyush25/nodeweb'
-                
                 
                 
             }
