@@ -23,12 +23,6 @@ pipeline {
                 echo 'bug cap'
             }
         }
-        stage('Build'){
-            steps{
-                echo 'started npm install'
-                sh 'npm install'
-            }
-        }
         stage('Unit Test')
         {
             steps{
